@@ -6,7 +6,7 @@ import json
 import streamlit as st
 import folium
 from streamlit_folium import st_folium
-
+from datetime import datetime, timedelta
 
 
 # Chargement des variables d'environnement depuis le fichier .env
@@ -96,90 +96,4 @@ for index, row in infos_meteo_df.iterrows():
 
 # Afficher la carte folium dans Streamlit
 st_folium(m)
-# #Features
-# #########
-# # # #Création de la carte centrée sur la ville sélectionnée
-# m = folium.Map(location=[46.2276, 2.2137], zoom_start=6)
-
-# # Add markers for each city in France
-# for ville in villes:
-#     # Get the latitude and longitude for the city
-#     infos_meteo = get_meteo(ville)
-#     lat = infos_meteo_df['Latitude']
-#     lon = infos_meteo_df['Longitude']
-    
-#     # Create a marker and add it to the map
-#     marker = folium.Marker(location=[lat, lon], popup=ville)
-#     marker.add_to(m)
-
-# # Display the map
-# st.write(m)
-
-# #####################################################################
-# # Définition des villes et de l'unité de mesure
-# villes = ['Paris', 'Marseille', 'Lyon', 'Toulouse', 'Nice', 'Nantes', 'Strasbourg', 'Montpellier', 'Bordeaux', 'Lille', 'Rennes', 'Reims', 'Le Havre', 'Saint-Étienne', 'Toulon', 'Grenoble', 'Dijon', 'Angers', 'Nîmes', 'Villeurbanne']
-# units = 'metric'
-
-# # Création du DataFrame pandas pour stocker toutes les informations météorologiques
-# infos_meteo_df = pd.DataFrame(columns=['Ville', 'Température', 'Température ressentie', 'Température minimale', 'Température maximale', 'Pression atmosphérique', 'Humidité', 'Vitesse du vent', 'Direction du vent', 'Lever du soleil', 'Coucher du soleil'])
-
-
-# # Appel de l'API OpenWeatherMap pour chaque ville et récupération des informations météorologiques
-# for ville in villes:
-#     url = f'http://api.openweathermap.org/data/2.5/weather?q={ville}&appid={api_key}&units={units}'
-#     response = requests.get(url)
-#     data = json.loads(response.text)
-#     temp = data['main']['temp']
-#     feels_like = data['main']['feels_like']
-#     temp_min = data['main']['temp_min']
-#     temp_max = data['main']['temp_max']
-#     pressure = data['main']['pressure']
-#     humidity = data['main']['humidity']
-#     wind_speed = data['wind']['speed']
-#     wind_deg = data['wind']['deg']
-#     sunrise = pd.to_datetime(data['sys']['sunrise'], unit='s')
-#     sunset = pd.to_datetime(data['sys']['sunset'], unit='s')
-
-#     # Ajout des informations météorologiques pour la ville dans la liste
-#     infos_meteo = infos_meteo_df.append([ville, temp, feels_like, temp_min, temp_max, pressure, humidity, wind_speed, wind_deg, sunrise, sunset])
-    
-# #######################################################################
-
-# # Affichage du DataFrame pandas
-# print(infos_meteo_df)
-
-# # Exportation du DataFrame dans un fichier CSV
-# infos_meteo_df.to_csv('informations_meteo.csv', index=False)
-
-# # #######################################################################
-# # Création de l'interface utilisateur avec Streamlit
-# st.title("Informations météorologiques")
-
-# # Sélection de la ville par l'utilisateur
-# ville = st.selectbox("Sélectionnez une ville :", villes)
-
-# # Récupération des informations météorologiques pour la ville sélectionnée
-# # infos_meteo = get_meteo(ville)
-
-# # Affichage des informations météorologiques
-# for cle, valeur in infos_meteo.items():
-#     st.write(cle, ":", valeur)
-# ##################################################
-# #Features
-# #########
-# # # #Création de la carte centrée sur la ville sélectionnée
-# m = folium.Map(location=[46.2276, 2.2137], zoom_start=6)
-
-# # Add markers for each city in France
-# for ville in villes:
-#     # Get the latitude and longitude for the city
-#     # infos_meteo = get_meteo(ville)
-#     lat = infos_meteo_df['Latitude']
-#     lon = infos_meteo_df['Longitude']
-    
-#     # Create a marker and add it to the map
-#     marker = folium.Marker(location=[lat, lon], popup=ville)
-#     marker.add_to(m)
-
-# # Display the map
-# st.write(m)
+##################################################
